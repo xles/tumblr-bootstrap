@@ -1,0 +1,197 @@
+{block:tumblrThemr}
+  <link rel="stylesheet" href="themes/demo/demo.css" type="text/css" media="screen"/>
+  <style type="text/css">{CustomCSS}</style>
+
+  <div id="wrapper">
+    <div id="title">
+      <a href="/">
+        {Title}
+      </a>
+    </div>
+    <div id="content">
+      {block:SearchPage}
+        {block:SearchResults}
+          <div id="searchresults">{SearchResultCount} results for {SearchQuery}</div>
+        {/block:SearchResults}
+        
+        {block:NoSearchResults}
+          <div id="searchresults">No search results for {SearchQuery}</div>
+        {/block:NoSearchResults}
+      {/block:SearchPage}
+      {block:Posts}
+        <div class="post">
+          {block:Photo}
+            <div class="media">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}</div>
+            {block:Caption}<div class="copy">{Caption}</div>{/block:Caption}
+          {/block:Photo}
+          {block:Video}
+            <div class="media">{Video-500}</div>
+            {block:Caption}<div class="copy">{Caption}</div>{/block:Caption}
+          {/block:Video}
+          {block:Audio}
+            {block:AlbumArt}
+              <div class="album_art">
+                <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" style="margin-bottom:10px;" />
+              </div>
+            {/block:AlbumArt}
+            <div class="audio">
+              <div class="player">{AudioPlayerWhite}</div>
+              <div class="meta">{PlayCountWithLabel}{block:ExternalAudio}<span class="download_external_audio"> &bull; <a href="{ExternalAudioURL}">{lang:Download}</a></span>{/block:ExternalAudio}</div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            {block:Caption}<div class="copy">{Caption}</div>{/block:Caption}
+          {/block:Audio}
+          {block:Quote}
+            <div class="quote {Length}">{Quote}</div>
+            <div class="copy">
+              <div class="quotebg">“</div>
+              {block:Source}
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td valign="top" style="width:20px;">&mdash;</td>
+                    <td valign="top" class="quote_source">
+                      {Source}
+                    </td>
+                  </tr>
+                </table>
+              {/block:Source}
+            </div>
+          {/block:Quote}
+          {block:Text}
+            {block:Title}<div class="title">{Title}</div>{/block:Title}
+            <div class="copy">{Body}</div>
+          {/block:Text}
+          {block:Answer}
+            <div class="question">
+              <div class="nipple"></div>
+              {Question}
+            </div>
+            <div class="asker_container"><img src="{AskerPortraitURL-24}">{Asker}</div>
+            <div class="copy">{Answer}</div>
+          {/block:Answer}
+          {block:Chat}
+            {block:Title}<div class="title">{Title}</div>{/block:Title}
+            <div class="chat">
+              <div class="lines">
+                {block:Lines}
+                  <div class="line {Alt}">{block:Label}<strong>{Label}</strong>{/block:Label} {Line}</div>
+                {/block:Lines}
+              </div>
+            </div>
+            <div class="clear"></div>
+            <div style="height:10px;"></div>
+          {/block:Chat}
+          {block:Link}
+            <div class="link"><a href="{URL}" {Target}>{Name} &raquo;</a></div>
+            {block:Description}<div class="copy">{Description}</div>{/block:Description}
+          {/block:Link}
+          
+          <a href="{Permalink}">
+            <div class="footer for_permalink">
+              <div class="date">
+                {block:Reblog}
+                Reblogged {TimeAgo} from {ReblogParentName}
+                {block:RebloggedFromReblog}(<span style="text-transform:lowercase;">Originally from {ReblogRootName}</span>){/block:RebloggedFromReblog}
+                {/block:Reblog}
+                &nbsp;
+                {block:Date}
+                Posted {TimeAgo} from {source}
+                {/block:Date}
+              </div>
+              <div class="notes">{block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}</div>
+              <div class="clear"></div>
+            </div>
+          </a>
+          
+          <div class="footer {block:ContentSource}with_source_url{/block:ContentSource}" style="
+            display:none;
+            {block:HasTags}display:block;{/block:HasTags}
+            {block:ContentSource}display:block;{/block:ContentSource}
+          ">
+            {block:HasTags}<div class="tags">{lang:Tagged}: {block:Tags}<a href="{TagURL}">{Tag}</a><span class="tag-commas">, </span>{/block:Tags}.</div>{/block:HasTags}
+            
+            {block:ContentSource}
+              <a href="{SourceURL}" class="source_url">
+                {lang:Source}:
+                {SourceTitle}
+              </a>
+            {/block:ContentSource}
+            <div class="clear"></div>
+          </div>
+          {block:PostNotes}<div class="notecontainer">{PostNotes}</div>{/block:PostNotes}
+        </div>
+        <div class="bottom"></div>
+      {/block:Posts}
+      
+      {block:Pagination}
+        <div id="navigation">
+          {block:PreviousPage}<a href="{PreviousPage}">&larr; {lang:Previous}</a>{/block:PreviousPage}
+          {block:NextPage}<a href="{NextPage}">{lang:Next page} &rarr;</a>{/block:NextPage}
+        </div>
+      {/block:Pagination}
+      
+    </div>
+    
+    <div id="sidebar">
+      <div id="top">
+        <div id="avatar"><a href="/"><img src="{PortraitURL-128}" /></a></div>
+        <div id="description">{Description}</div>
+        
+        <div id="pages" class="ask_and_submit">
+          {block:AskEnabled}<a href="/ask" class="page">{AskLabel}</a>{/block:AskEnabled}
+          {block:SubmissionsEnabled}<a href="/submit" class="page">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+          <div class="clear"></div>
+        </div>
+        
+        {block:HasPages}
+          <div id="pages">
+            {block:Pages}<a href="{URL}" class="page">{Label}</a>{/block:Pages}
+            <div class="clear"></div>
+          </div>
+        {/block:HasPages}
+        
+        <div id="search">
+          <form action="/search" method="get" id="search-form">
+            <input type="hidden" name="t" value="{Name}" />
+            <input type="hidden" name="scope" value="all_of_tumblr" />
+            <input type="text" name="q" class="query" value="{SearchQuery}" />
+            <input type="submit" value="{lang:Search}" class="submit" />
+            <div class="clear"></div>
+          </form>
+        </div>
+        <div id="search-scope">
+          <input type="radio" id="search-scope-me" name="scope" checked onclick="document.getElementById('search-form').action='/search'" /> <label for="search-scope-me" onclick="document.getElementById('search-form').action='/search'">{lang:My blog}</label>
+          <input type="radio" id="search-scope-all" name="scope">{lang:All of Tumblr}</label>
+        </div>
+        <a href="http://www.tumblr.com/follow/{PlaintextName}"><div class="heading" id="followontumblr">{lang:Follow on Tumblr}</div></a>
+        {block:Following}
+          <div class="heading" id="following">{lang:Following}</div>
+          <div class="content" id="following-avatars">
+            {block:Followed}<a href="{FollowedURL}"><img src="{FollowedPortraitURL-40}" /></a>{/block:Followed}
+          </div>
+        {/block:Following}
+        
+        <div id="buttons">
+          <div class="row">
+            <div class="button" id="button-rss"><a href="{RSS}">{lang:RSS feed}</a></div>
+            <div class="button" id="button-random"><a href="/random">{lang:Random}</a></div>
+          </div>
+          <div class="clear"></div>
+          <div class="row">
+            <div class="button" id="button-archive"><a href="/archive">{lang:Archive}</a></div>
+            <div class="button" id="button-mobile"><a href="/mobile">{lang:Mobile}</a></div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        
+      </div>
+      
+      <div id="bottom"></div>
+      <div id="copyright">&copy; 2011 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <script type="text/javascript" src="themes/demo/jquery-1.5.1.min.js"></script>
+  <script type="text/javascript" src="themes/demo/demo.js"></script>
+{/block:tumblrThemr}

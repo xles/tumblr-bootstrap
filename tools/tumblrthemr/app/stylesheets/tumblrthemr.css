@@ -1,0 +1,185 @@
+/* ---- TumblrThemr ------------------- */
+
+#tumblrthemr-loading, #tumblrthemr-error, #tumblrthemr-config {
+text-align: left !important
+}
+
+
+#tumblrthemr-loading {
+  position: absolute;
+}
+body > #tumblrthemr-loading {
+  background: #fff url(../images/spinner.gif) no-repeat 7px 7px;
+  border: 1px #efefef solid;
+  top: -30px;
+  font: bold 11px/1.4 Helvetica, arial, verdana, sans-serif;
+  letter-spacing: .2em;
+  padding: 8px 8px 8px 29px;
+  position: fixed;
+  left: 20px;
+  text-transform: uppercase;
+  z-index: 99999;
+  -moz-box-shadow:    rgba(0,0,0,.1) 0 0 5px;
+  -webkit-box-shadow: rgba(0,0,0,.1) 0 0 5px;
+  box-shadow:         rgba(0,0,0,.1) 0 0 5px; 
+}
+
+#tumblrthemr-error {
+  background: #ffc;
+  border: 1px #efef8e solid;
+  display: none;
+  color: #3c3c0d;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 0;
+  margin: -20px -20px 15px;
+  padding: 15px;
+  text-transform: none;
+}
+
+#tumblrthemr-config {
+  position: absolute;
+}
+
+body > #tumblrthemr-config {
+  background: #fff;
+  border: 1px #efefef solid;
+  bottom: 0;
+  display: none;
+  font: bold 11px/1.4 Helvetica, arial, verdana, sans-serif;
+  letter-spacing: .2em;
+  padding: 20px;
+  position: fixed;
+  left: 20px;
+  text-transform: uppercase;
+  z-index: 99999;
+  -moz-box-shadow:    rgba(0,0,0,.1) 0 0 5px;
+  -webkit-box-shadow: rgba(0,0,0,.1) 0 0 5px;
+  box-shadow:         rgba(0,0,0,.1) 0 0 5px; 
+}
+  #tumblrthemr-config label {
+    display: block;
+  }
+  #tumblrthemr-config span {
+    color: #555;
+    display: block;
+    font-family: "Andale Mono", "Menlo", "Monaco", courier, sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  #tumblrthemr-config input {
+    background: none;
+    border: 0;
+    border-bottom: 1px #ccc solid;
+    font-size: 12px;
+    padding: 3px 3px 4px;
+  }
+    #tumblrthemr-config input:focus {
+      border-bottom: 1px #333 solid;
+      outline: none;
+    }
+  #tumblrthemr-config button {
+    background: #ddd;
+    border: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius:    3px;
+    border-radius:         3px;
+    cursor: pointer;
+    font: bold 12px/1.4 Helvetica, arial, verdana, sans-serif;
+    margin: 14px 6px 0 -6px;
+    padding: 5px 8px;
+    text-shadow: rgba(255,255,255,.5) 0 1px 0;
+  }
+    #tumblrthemr-config button:hover {
+      background: #bababa;
+    }
+  #tumblrthemr-config-hide {  
+    display: inline;
+    font-weight: normal !important;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+    #tumblrthemr-config-hide a {
+      color: #666;
+      text-decoration: underline;
+    }
+  .tumblrthemr-start #tumblrthemr-config-hide {
+    display: none;
+  }
+#tumblrthemr-label-url {
+  margin-bottom: 10px;
+}
+  #tumblrthemr-label-url input {
+    width: 270px;
+  }
+#tumblrthemr-label-theme input {
+  width: 200px;
+}
+
+#tumblrthemr-intro {
+  display: none;
+  text-align: center;
+  font: bold 30px/1.4 Helvetica, arial, verdana, sans-serif;
+  text-shadow: rgba(255,255,255,.5) 0 1px 0;
+  margin: 200px 0 30px;
+}
+
+#tumblrthemr-config-show {
+  background: #fff;
+  border: 1px #efefef solid;
+  border-bottom: 0;
+  bottom: 0;
+  color: #111;
+  font: bold 11px/1.4 Helvetica, arial, verdana, sans-serif;
+  letter-spacing: .2em;
+  left: 30px;
+  padding: 8px 8px 8px;
+  position: fixed;
+  text-transform: uppercase;
+  z-index: 99998;
+  -moz-box-shadow:    rgba(0,0,0,.1) 0 0 5px;
+  -webkit-box-shadow: rgba(0,0,0,.1) 0 0 5px;
+  box-shadow:         rgba(0,0,0,.1) 0 0 5px;
+}
+  #tumblrthemr-config-show:hover {
+    border-color: #666;
+    text-decoration: none;
+  }
+  .tumblrthemr-start #tumblrthemr-config-show {
+    display: none;
+  }
+
+/* ----- Start----------------------- */
+  .tumblrthemr-start #tumblrthemr-intro {
+    display: block;
+  }
+
+.tumblrthemr-start #tumblrthemr-config {
+  font-size: 14px;
+  margin: 0 auto;
+  position: static;
+  padding: 25px;
+  width: 460px;
+}
+  .tumblrthemr-start #tumblrthemr-config span {
+    font-size: 18px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .tumblrthemr-start #tumblrthemr-config input {
+    font-size: 18px;
+  }
+  .tumblrthemr-start #tumblrthemr-config button {
+    font-size: 18px;
+    margin-top: 18px;
+    padding: 6px 10px 7px;
+  }
+  .tumblrthemr-start  #tumblrthemr-label-url input {
+    width: 370px;
+  }
+  .tumblrthemr-start  #tumblrthemr-label-theme input {
+    width: 290px;
+  }
