@@ -14,14 +14,32 @@
 <!--
 		<link href="css/style.css" rel="stylesheet">
 -->
+		<style type="text/css">
+			body {
+				padding-top: 70px;
+				padding-bottom: 40px;
+			}
+			.center {
+				text-align: center;
+			}
+			footer {
+				padding-top: 40px;
+				padding-bottom: 30px;
+				margin-top: 100px;
+				text-align: center;
+				border-top: 1px solid #e5e5e5;
+			}
+		</style>
 		<style type="text/css">{CustomCSS}</style>
 	</head>
 	<body>
-
 		<div class="navbar navbar-fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="#">{Title}</a>
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav hidden-sm">
+					{block:AskEnabled}
+						<li class="visible-lg"><a href="/ask">{AskLabel}</a></li>
+					{/block:AskEnabled}
 					{block:HasPages}
             {block:Pages}
             <li><a href="{URL}">{Label}</a></li>
@@ -129,13 +147,12 @@
 			{/block:Chat}
 
 			{block:Video}
-				<div class="post video">
-					{Video-500}
-
+				<div class="center">
+						{Video-500}
+				</div>
 					{block:Caption}
 						<div class="caption">{Caption}</div>
 					{/block:Caption}
-				</div>
 			{/block:Video}
 
 			{block:Audio}
@@ -213,67 +230,80 @@
 				<div class="media">
 					<img src="{PortraitURL-128}" class="media-object pull-left img-thumbnail">
 					<div class="media-body">
-		{block:Description}
-			<p class="lead">{Description}</p>
-		{/block:Description}
+						{block:Description}
+							<p class="lead">{Description}</p>
+						{/block:Description}
 					</div>
 				</div>
+				<ul class="nav nav-pills nav-stacked">
 					{block:AskEnabled}
-					<a href="/ask" class="btn btn-default btn-block">
-						{AskLabel}
-					</a>
+						<li><a href="/ask">{AskLabel}</a></li>
 					{/block:AskEnabled}
 					{block:SubmissionsEnabled}
-					<a href="/submit" class="btn btn-default btn-block">
-						{SubmitLabel}
-					</a>
+						<li><a href="/submit">{SubmitLabel}</a></li>
 					{/block:SubmissionsEnabled}
-				<a href="/archive" class="btn btn-default btn-block">Archive</a>
+					<li><a href="/archive">Archive</a></li>
 
+					{block:HasPages}
+            {block:Pages}
+            <li class="visible-sm"><a href="{URL}">{Label}</a></li>
+            {/block:Pages}
+     		  {/block:HasPages}
+				</ul>
 
-
-<div class="well">
 <form action="/search" method="get" class="form-horizontal">
 		<div class="input-group">
 			<span class="glyphicon glyphicon-search input-group-addon"></span>
 	    <input type="text" name="q" value="{SearchQuery}" class="form-control" placeholder="Search">
 		</div>
 </form>
-</div>
-
-				<div id="search">
-					<form action="/search" method="get" id="search-form" class="form-horizontal">
-						<div class="form-group">
-						<input type="hidden" name="t" value="{Name}" />
-						<input type="hidden" name="scope" value="all_of_tumblr" />
-						<input type="text" name="q" class="form-control" value="{SearchQuery}" />
-						<input type="submit" value="{lang:Search}" class="btn btn-default" />
-						</div>
-					</form>
-				</div>
-				<div id="search-scope">
-					<input type="radio" 
-									id="search-scope-me" 
-									name="scope" 
-									checked 
-									onclick="document.getElementById('search-form').action='/search'" /> 
-					<label for="search-scope-me" 
-									onclick="document.getElementById('search-form').action='/search'">
-									{lang:My blog}</label>
-					<input type="radio" id="search-scope-all" name="scope">{lang:All of Tumblr}</label>
-				</div>
-
 
 					<a href="http://www.tumblr.com/follow/{PlaintextName}" class="btn btn-primary btn-lg btn-block">
 						{lang:Follow on Tumblr}
 					</a>
+
+					<div class="row">
+						<div class="col-lg-6" id="button-rss">
+							<a href="{RSS}" class="btn btn-default btn-block">{lang:RSS feed}</a>
+						</div>
+						<div class="col-lg-6" id="button-random">
+							<a href="/random" class="btn btn-default btn-block">{lang:Random}</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6" id="button-archive">
+							<a href="/archive" class="btn btn-default btn-block">{lang:Archive}</a>
+						</div>
+						<div class="col-lg-6" id="button-mobile">
+							<a href="/mobile" class="btn btn-default btn-block">{lang:Mobile}</a>
+						</div>
+					</div>
+				</div>
 
 				</div>
 				
 			</div>
 		</div>
 		</div>
+        {block:Pagination}
+            {block:PreviousPage}
+                <a href="{PreviousPage}">Previous</a>
+            {/block:PreviousPage}
 
+            {block:JumpPagination length="5"}
+                {block:CurrentPage}
+                    <span class="current_page">{PageNumber}</span>
+                {/block:CurrentPage}
+
+                {block:JumpPage}
+                    <a class="jump_page" href="{URL}">{PageNumber}</a>
+                {/block:JumpPage}
+            {/block:JumpPagination}
+
+            {block:NextPage}
+                <a href="{NextPage}">Next</a>
+            {/block:NextPage}
+        {/block:Pagination}
     {block:Pagination}
 		<ul class="pager">
 			{block:PreviousPage}
@@ -287,7 +317,9 @@
 			</ul>
     {/block:Pagination}
     <footer>
+			&copy; 2013 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a><br>
+			Built with <a href="http://getbootstrap.com/">Twitter Bootstrap</a> 
+			using <a href="http://tumblrthemr.icelab.com.au/">TumblrThemr</a>.
 		</footer>
-
 	</body>
 </html>
