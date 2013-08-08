@@ -22,248 +22,235 @@
 		<div class="container" id="posts">
 			<div class="row">
 				<div class="col-lg-8">
-			{block:Posts}
-			<div class="panel">
+					{block:Posts}
+					<div class="panel">
 
-			{block:Text}
-			<div class="post text">
-					{block:Title}
-					<div class="panel-heading">
-						<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
-					</div>
-					{/block:Title}
-					{Body}
-										
-			</div>
-			{/block:Text}
-
-			{block:Photo}
-			<div class="post photo">
-				<div class="thumbnail" style="text-align:center;">
-					{LinkOpenTag}
-					<img src="{PhotoURL-500}" alt="{PhotoAlt}" class="img-rounded">
-					{LinkCloseTag}
-					{block:Caption}
-					<div class="caption">
-						<h3>{Caption}</h3>
-					</div>
-					{/block:Caption}
-				</div>
-			</div>
-			{/block:Photo}
-
-			{block:Panorama}
-				<div class="post panorama">
-					{LinkOpenTag}
-						<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
-					{LinkCloseTag}
-
-					{block:Caption}
-						<div class="caption">{Caption}</div>
-					{/block:Caption}
-				</div>
-			{/block:Panorama}
-
-			{block:Photoset}
-				<div class="post photoset">
-					{Photoset-500}
-					{block:Caption}
-						<div class="caption">{Caption}</div>
-					{/block:Caption}
-				</div>
-			{/block:Photoset}
-
-			{block:Quote}
-				<div class="post quote">
-					<blockquote>
-					<p>"{Quote}"</p>
-							{block:Source}
-							<small>
-								<cite>{Source}</cite>
-							</small>
-							{/block:Source}
-					</blockquote>
-				</div>
-			{/block:Quote}
-
-			{block:Link}
-				<div class="post link">
-					<a href="{URL}" class="link" {Target}>{Name}</a>
-					{block:Description}
-						<div class="description">{Description}</div>
-					{/block:Description}
-				</div>
-			{/block:Link}
-
-			{block:Chat}
-				<div class="post chat">
-					{block:Title}
-						<h3><a href="{Permalink}">{Title}</a></h3>
-					{/block:Title}
-
-					<ul class="chat">
-						{block:Lines}
-							<li class="{Alt} user_{UserNumber}">
-								{block:Label}
-									<span class="label">{Label}</span>
-								{/block:Label}
-
-								{Line}
-							</li>
-						{/block:Lines}
-					</ul>
-				</div>
-			{/block:Chat}
-
-			{block:Video}
-				<div class="center">
-						{Video-500}
-				</div>
-					{block:Caption}
-						<div class="caption">{Caption}</div>
-					{/block:Caption}
-			{/block:Video}
-
-			{block:Audio}
-				<div class="post audio">
-					{AudioPlayerBlack}
-					{block:Caption}
-						<div class="caption">{Caption}</div>
-					{/block:Caption}
-				</div>
-			{/block:Audio}
-
-			{block:Answer}
-				<div class="well">
-					<div class="media">
-						<img src="{AskerPortraitURL-64}" class="media-object pull-left">
-						<div class="media-body">
-							<h4 class="media-heading">
-								{Asker} asked
-							</h4>
-							{Question}
-						</div>
-				</div>
-				</div>
-				{Answer}
-			{/block:Answer}
-
-			<div class="panel-footer">
-					<a href="{Permalink}">
-							<div class="notes pull-right">
-								{block:NoteCount}
-									<span class="badge" title="{NoteCountWithLabel}">{NoteCount}</span>
-								{/block:NoteCount}
+						{block:Text}
+							{block:Title}
+							<div class="panel-heading">
+								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
 							</div>
-						<div class="footer for_permalink">
-							<div class="date">
-								{block:Reblog}
-								Reblogged {TimeAgo} from {ReblogParentName}
-								{block:RebloggedFromReblog}(<span style="text-transform:lowercase;">Originally from {ReblogRootName}</span>){/block:RebloggedFromReblog}
-								{/block:Reblog}
+							{/block:Title}
+							{Body}			
+						{/block:Text}
 
-								{block:Date}
-								Posted {TimeAgo} from {source}
-								{/block:Date}
+						{block:Photo}
+							<div class="thumbnail" style="text-align:center;">
+								{LinkOpenTag}
+								<img src="{PhotoURL-500}" alt="{PhotoAlt}" class="img-rounded">
+								{LinkCloseTag}
+								{block:Caption}
+								<div class="caption">
+									<h3>{Caption}</h3>
+								</div>
+								{/block:Caption}
 							</div>
-						</div>
-					</a>
-						{block:HasTags}
-						<div>
-							{block:Tags}
-							<a href="{TagURL}" class="label label-default">{Tag}</a>
-							{/block:Tags}
-						</div>
-						{/block:HasTags}
-						
-						{block:ContentSource}
+						{/block:Photo}
+
+						{block:Panorama}
+							{LinkOpenTag}
+								<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+							{LinkCloseTag}
+
+							{block:Caption}
+								<div class="caption">{Caption}</div>
+							{/block:Caption}
+						{/block:Panorama}
+
+						{block:Photoset}
+							{Photoset-500}
+							{block:Caption}
+								<div class="caption">{Caption}</div>
+							{/block:Caption}
+						{/block:Photoset}
+
+						{block:Quote}
+							<blockquote>
+								<p>"{Quote}"</p>
+								{block:Source}
+									<small>
+										<cite>{Source}</cite>
+									</small>
+								{/block:Source}
+							</blockquote>
+						{/block:Quote}
+
+						{block:Link}
+								<a href="{URL}" class="link" {Target}>{Name}</a>
+								{block:Description}
+									<div class="description">{Description}</div>
+								{/block:Description}
+						{/block:Link}
+
+						{block:Chat}
+							<div class="post chat">
+								{block:Title}
+									<h3><a href="{Permalink}">{Title}</a></h3>
+								{/block:Title}
+
+								<ul class="chat">
+									{block:Lines}
+										<li class="{Alt} user_{UserNumber}">
+											{block:Label}
+												<span class="label">{Label}</span>
+											{/block:Label}
+
+											{Line}
+										</li>
+									{/block:Lines}
+								</ul>
+							</div>
+						{/block:Chat}
+
+						{block:Video}
+							<div class="center">
+									{Video-500}
+							</div>
+								{block:Caption}
+									<div class="caption">{Caption}</div>
+								{/block:Caption}
+						{/block:Video}
+
+						{block:Audio}
+							{AudioPlayerBlack}
+							{block:Caption}
+								<div class="caption">{Caption}</div>
+							{/block:Caption}
+						{/block:Audio}
+
+						{block:Answer}
+							<div class="well">
+								<div class="media">
+									<img src="{AskerPortraitURL-64}" class="media-object pull-left">
+									<div class="media-body">
+										<h4 class="media-heading">
+											{Asker} asked
+										</h4>
+										{Question}
+									</div>
+								</div>
+							</div>
+							{Answer}
+						{/block:Answer}
+
+						<div class="panel-footer">
+							<a href="{Permalink}">
+								<div class="notes pull-right">
+									{block:NoteCount}
+										<span class="badge" title="{NoteCountWithLabel}">{NoteCount}</span>
+									{/block:NoteCount}
+								</div>
+								<div class="footer for_permalink">
+									<div class="date">
+										{block:Reblog}
+											Reblogged {TimeAgo} from {ReblogParentName}
+											{block:RebloggedFromReblog}
+												(<span style="text-transform:lowercase;">Originally from {ReblogRootName}</span>)
+											{/block:RebloggedFromReblog}
+										{/block:Reblog}
+
+										{block:Date}
+											Posted {TimeAgo} from {source}
+										{/block:Date}
+									</div>
+								</div>
+							</a>
+							{block:HasTags}
+							<div>
+								{block:Tags}
+									<a href="{TagURL}" class="label label-default">{Tag}</a>
+								{/block:Tags}
+							</div>
+							{/block:HasTags}
+									
+							{block:ContentSource}
 							<a href="{SourceURL}" class="source_url">
 								{lang:Source}:
 								{SourceTitle}
 							</a>
-						{/block:ContentSource}
-					
-
-			</div>
-		</div>
-		{block:PostNotes}
-		<div class="panel">
-					<div class="panel-heading">Notes</div>
-			{PostNotes}
-		</div>
-		{/block:PostNotes}
-		{/block:Posts}
-
-		{block:Pagination}
-		<ul class="pager">
-			{block:PreviousPage}
-				<li class="previous"><a href="{PreviousPage}">&larr; Newer</a></li>
-			{/block:PreviousPage}
-
-			{block:NextPage}
-				<li class="next"><a href="{NextPage}">Older &rarr;</a></li>
-			{/block:NextPage}
-
-			</ul>
-		{/block:Pagination}
-
-		<div class="row center">
-			{block:Pagination}
-			<ul class="pagination">
-				{block:PreviousPage}
-					<li><a href="{PreviousPage}">&laquo;</a></li>
-				{/block:PreviousPage}
-
-				{block:JumpPagination length="5"}
-					{block:CurrentPage}
-						<li class="active"><a href="#">{PageNumber}</a></li>
-					{/block:CurrentPage}
-
-					{block:JumpPage}
-						<li><a href="{URL}">{PageNumber}</a></li>
-					{/block:JumpPage}
-				{/block:JumpPagination}
-
-				{block:NextPage}
-					<li><a href="{NextPage}">&raquo;</a></li>
-				{/block:NextPage}
-			</ul>
-			{/block:Pagination}
-		</div>
-	
-		</div>
-		<div class="col-lg-4">
-			<div class="well well-lg">
-				<div class="media">
-					<img src="{PortraitURL-128}" class="media-object pull-left img-thumbnail">
-					<div class="media-body">
-						{block:Description}
-							<p class="lead">{Description}</p>
-						{/block:Description}
+							{/block:ContentSource}
+						</div>
 					</div>
+					
+					{block:PostNotes}
+					<div class="panel">
+						<div class="panel-heading">Notes</div>
+							{PostNotes}
+					</div>
+					{/block:PostNotes}
+					
+				{/block:Posts}
+
+				{block:Pagination}
+				<ul class="pager">
+					{block:PreviousPage}
+						<li class="previous"><a href="{PreviousPage}">&larr; Newer</a></li>
+					{/block:PreviousPage}
+
+					{block:NextPage}
+						<li class="next"><a href="{NextPage}">Older &rarr;</a></li>
+					{/block:NextPage}
+
+					</ul>
+				{/block:Pagination}
+
+				<div class="row center">
+					{block:Pagination}
+					<ul class="pagination">
+						{block:PreviousPage}
+							<li><a href="{PreviousPage}">&laquo;</a></li>
+						{/block:PreviousPage}
+
+						{block:JumpPagination length="5"}
+							{block:CurrentPage}
+								<li class="active"><a href="#">{PageNumber}</a></li>
+							{/block:CurrentPage}
+
+							{block:JumpPage}
+								<li><a href="{URL}">{PageNumber}</a></li>
+							{/block:JumpPage}
+						{/block:JumpPagination}
+
+						{block:NextPage}
+							<li><a href="{NextPage}">&raquo;</a></li>
+						{/block:NextPage}
+					</ul>
+					{/block:Pagination}
 				</div>
-				<ul class="nav nav-pills nav-stacked">
-					{block:AskEnabled}
-						<li><a href="/ask">{AskLabel}</a></li>
-					{/block:AskEnabled}
-					{block:SubmissionsEnabled}
-						<li><a href="/submit">{SubmitLabel}</a></li>
-					{/block:SubmissionsEnabled}
-					<li><a href="/archive">Archive</a></li>
+	
+			</div>
+			<div class="col-lg-4">
+				<div class="well well-lg">
+					<div class="media">
+						<img src="{PortraitURL-128}" class="media-object pull-left img-thumbnail">
+						<div class="media-body">
+							{block:Description}
+								<p class="lead">{Description}</p>
+							{/block:Description}
+						</div>
+					</div>
+					<ul class="nav nav-pills nav-stacked">
+						{block:AskEnabled}
+							<li><a href="/ask">{AskLabel}</a></li>
+						{/block:AskEnabled}
+						{block:SubmissionsEnabled}
+							<li><a href="/submit">{SubmitLabel}</a></li>
+						{/block:SubmissionsEnabled}
+						<li><a href="/archive">Archive</a></li>
 
-					{block:HasPages}
-						{block:Pages}
-						<li class="visible-sm"><a href="{URL}">{Label}</a></li>
-						{/block:Pages}
-					{/block:HasPages}
-				</ul>
+						{block:HasPages}
+							{block:Pages}
+							<li class="visible-sm"><a href="{URL}">{Label}</a></li>
+							{/block:Pages}
+						{/block:HasPages}
+					</ul>
 
-<form action="/search" method="get" class="form-horizontal">
-		<div class="input-group">
-			<span class="glyphicon glyphicon-search input-group-addon"></span>
-			<input type="text" name="q" value="{SearchQuery}" class="form-control" placeholder="Search">
-		</div>
-</form>
+					<form action="/search" method="get" class="form-horizontal">
+							<div class="input-group">
+								<span class="glyphicon glyphicon-search input-group-addon"></span>
+								<input type="text" name="q" value="{SearchQuery}" class="form-control" placeholder="Search">
+							</div>
+					</form>
 
 					<a href="http://www.tumblr.com/follow/{PlaintextName}" class="btn btn-primary btn-lg btn-block">
 						{lang:Follow on Tumblr}
@@ -292,7 +279,6 @@
 			</div>
 		</div>
 
-	</div>
 		<footer>
 			&copy; 2013 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a><br>
 			Built with <a href="http://getbootstrap.com/">Twitter Bootstrap</a> 
