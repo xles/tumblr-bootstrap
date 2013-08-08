@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+		<head>
+			<title>{Title}</title>
+		<link rel="shortcut icon" href="{Favicon}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="alternate" type="application/rss+xml" href="{RSS}">
+		{block:Description}
+			<meta name="description" content="{MetaDescription}" />
+		{/block:Description}
+
+
+		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
+<!--
+		<link href="css/style.css" rel="stylesheet">
+-->
+		<style type="text/css">{CustomCSS}</style>
+	</head>
+	<body>
+
+		<div class="navbar navbar-fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="#">{Title}</a>
+				<ul class="nav navbar-nav">
+					{block:HasPages}
+            {block:Pages}
+            <li><a href="{URL}">{Label}</a></li>
+            {/block:Pages}
+     		  {/block:HasPages}
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="container" id="posts">
+			<div class="row">
+				<div class="col-lg-8">
+			{block:Posts}
+			<div class="panel">
+
+			{block:Text}
+			<div class="post text">
+					{block:Title}
+					<div class="panel-heading">
+						<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
+					</div>
+					{/block:Title}
+					{Body}
+										
+			</div>
+			{/block:Text}
+
+			{block:Photo}
+			<div class="post photo">
+				<div class="thumbnail" style="text-align:center;">
+					{LinkOpenTag}
+					<img src="{PhotoURL-500}" alt="{PhotoAlt}" class="img-rounded">
+					{LinkCloseTag}
+					{block:Caption}
+					<div class="caption">
+						<h3>{Caption}</h3>
+					</div>
+					{/block:Caption}
+				</div>
+			</div>
+			{/block:Photo}
+
+			{block:Panorama}
+				<div class="post panorama">
+					{LinkOpenTag}
+						<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+					{LinkCloseTag}
+
+					{block:Caption}
+						<div class="caption">{Caption}</div>
+					{/block:Caption}
+				</div>
+			{/block:Panorama}
+
+			{block:Photoset}
+				<div class="post photoset">
+					{Photoset-500}
+					{block:Caption}
+						<div class="caption">{Caption}</div>
+					{/block:Caption}
+				</div>
+			{/block:Photoset}
+
+			{block:Quote}
+				<div class="post quote">
+					<blockquote>
+					<p>"{Quote}"</p>
+							{block:Source}
+							<small>
+								<cite>{Source}</cite>
+							</small>
+							{/block:Source}
+					</blockquote>
+				</div>
+			{/block:Quote}
+
+			{block:Link}
+				<div class="post link">
+					<a href="{URL}" class="link" {Target}>{Name}</a>
+					{block:Description}
+						<div class="description">{Description}</div>
+					{/block:Description}
+				</div>
+			{/block:Link}
+
+			{block:Chat}
+				<div class="post chat">
+					{block:Title}
+						<h3><a href="{Permalink}">{Title}</a></h3>
+					{/block:Title}
+
+					<ul class="chat">
+						{block:Lines}
+							<li class="{Alt} user_{UserNumber}">
+								{block:Label}
+									<span class="label">{Label}</span>
+								{/block:Label}
+
+								{Line}
+							</li>
+						{/block:Lines}
+					</ul>
+				</div>
+			{/block:Chat}
+
+			{block:Video}
+				<div class="post video">
+					{Video-500}
+
+					{block:Caption}
+						<div class="caption">{Caption}</div>
+					{/block:Caption}
+				</div>
+			{/block:Video}
+
+			{block:Audio}
+				<div class="post audio">
+					{AudioPlayerBlack}
+					{block:Caption}
+						<div class="caption">{Caption}</div>
+					{/block:Caption}
+				</div>
+			{/block:Audio}
+
+			{block:Answer}
+				<div class="well">
+					<div class="media">
+						<img src="{AskerPortraitURL-64}" class="media-object pull-left">
+						<div class="media-body">
+							<h4 class="media-heading">
+								{Asker} asked
+							</h4>
+							{Question}
+						</div>
+				</div>
+				</div>
+				{Answer}
+			{/block:Answer}
+
+			<div class="panel-footer">
+					<a href="{Permalink}">
+							<div class="notes pull-right">
+								{block:NoteCount}
+									<span class="badge" title="{NoteCountWithLabel}">{NoteCount}</span>
+								{/block:NoteCount}
+							</div>
+						<div class="footer for_permalink">
+							<div class="date">
+								{block:Reblog}
+								Reblogged {TimeAgo} from {ReblogParentName}
+								{block:RebloggedFromReblog}(<span style="text-transform:lowercase;">Originally from {ReblogRootName}</span>){/block:RebloggedFromReblog}
+								{/block:Reblog}
+
+								{block:Date}
+								Posted {TimeAgo} from {source}
+								{/block:Date}
+							</div>
+						</div>
+					</a>
+						{block:HasTags}
+						<div>
+							{block:Tags}
+							<a href="{TagURL}" class="label label-default">{Tag}</a>
+							{/block:Tags}
+						</div>
+						{/block:HasTags}
+						
+						{block:ContentSource}
+							<a href="{SourceURL}" class="source_url">
+								{lang:Source}:
+								{SourceTitle}
+							</a>
+						{/block:ContentSource}
+					
+
+			</div>
+		</div>
+		{block:PostNotes}
+		<div class="panel">
+					<div class="panel-heading">Notes</div>
+			{PostNotes}
+		</div>
+		{/block:PostNotes}
+		{/block:Posts}
+		</div>
+		<div class="col-lg-4">
+			<div class="well well-lg">
+				<div class="media">
+					<img src="{PortraitURL-128}" class="media-object pull-left img-thumbnail">
+					<div class="media-body">
+		{block:Description}
+			<p class="lead">{Description}</p>
+		{/block:Description}
+					</div>
+				</div>
+					{block:AskEnabled}
+					<a href="/ask" class="btn btn-default btn-block">
+						{AskLabel}
+					</a>
+					{/block:AskEnabled}
+					{block:SubmissionsEnabled}
+					<a href="/submit" class="btn btn-default btn-block">
+						{SubmitLabel}
+					</a>
+					{/block:SubmissionsEnabled}
+				<a href="/archive" class="btn btn-default btn-block">Archive</a>
+
+
+
+<div class="well">
+<form action="/search" method="get" class="form-horizontal">
+		<div class="input-group">
+			<span class="glyphicon glyphicon-search input-group-addon"></span>
+	    <input type="text" name="q" value="{SearchQuery}" class="form-control" placeholder="Search">
+		</div>
+</form>
+</div>
+
+				<div id="search">
+					<form action="/search" method="get" id="search-form" class="form-horizontal">
+						<div class="form-group">
+						<input type="hidden" name="t" value="{Name}" />
+						<input type="hidden" name="scope" value="all_of_tumblr" />
+						<input type="text" name="q" class="form-control" value="{SearchQuery}" />
+						<input type="submit" value="{lang:Search}" class="btn btn-default" />
+						</div>
+					</form>
+				</div>
+				<div id="search-scope">
+					<input type="radio" 
+									id="search-scope-me" 
+									name="scope" 
+									checked 
+									onclick="document.getElementById('search-form').action='/search'" /> 
+					<label for="search-scope-me" 
+									onclick="document.getElementById('search-form').action='/search'">
+									{lang:My blog}</label>
+					<input type="radio" id="search-scope-all" name="scope">{lang:All of Tumblr}</label>
+				</div>
+
+
+					<a href="http://www.tumblr.com/follow/{PlaintextName}" class="btn btn-primary btn-lg btn-block">
+						{lang:Follow on Tumblr}
+					</a>
+
+				</div>
+				
+			</div>
+		</div>
+		</div>
+
+    {block:Pagination}
+		<ul class="pager">
+			{block:PreviousPage}
+				<li><a href="{PreviousPage}">&#171; Previous</a></li>
+			{/block:PreviousPage}
+
+			{block:NextPage}
+				<li><a href="{NextPage}">Next &#187;</a></li>
+			{/block:NextPage}
+
+			</ul>
+    {/block:Pagination}
+    <footer>
+		</footer>
+
+	</body>
+</html>
