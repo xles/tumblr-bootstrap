@@ -1,56 +1,17 @@
 @import url('http://getbootstrap.com/dist/css/bootstrap.css');
-@import url('typeahead.js-bootstrap.css');
-/*
-@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css');
-*/
 @import url('bootstrap-glyphicons.css');
-@import url('jquery-ui.css');
      
 body {
 	padding-top: 70px;
 	padding-bottom: 40px;
 }
-.sidebar-nav {
-	padding: 9px 0;
+.center {
+	text-align: center;
 }
-
-#loading-indicator.pull-right {
-	padding-top: 17px;
-	padding-right: 17px;
+footer {
+	padding-top: 40px;
+	padding-bottom: 30px;
+	margin-top: 100px;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
 }
-@media (max-width: 980px) {
-/* Enable use of floated navbar text */
-.navbar-text.pull-right {
-	float: none;
-	padding-left: 5px;
-	padding-right: 5px;
-}
-}
-.twitter-typeahead {
-	display: inherit;
-	width: 100%;
-}
-.ui-autocomplete {
-	border: none;
-}
-.ui-autocomplete .ui-menu {
-}
-.ui-autocomplete .ui-menu-item {
-}
-.ui-autocomplete .ui-menu-item .ui-corner-all {
-}
-.ui-autocomplete .ui-menu-item .ui-corner-all:hover,
-.ui-autocomplete .ui-menu-item .ui-corner-all:focus
-{
-	border-radius: 0;
-	background-color: #428bca;
-}
-
-/*
-.dropdown-menu.pull-right {
-right: 0;
-left: auto;
-}
-.pull-right {
-float: right;
-*/
