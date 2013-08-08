@@ -286,23 +286,25 @@
 		</div>
 		</div>
         {block:Pagination}
+        <ul class="pagination">
             {block:PreviousPage}
-                <a href="{PreviousPage}">Previous</a>
+						  <li><a href="{PreviousPage}">&laquo;</a></li>
             {/block:PreviousPage}
 
             {block:JumpPagination length="5"}
                 {block:CurrentPage}
-                    <span class="current_page">{PageNumber}</span>
+                    <li class="active"><a href="#">{PageNumber}</a></li>
                 {/block:CurrentPage}
 
                 {block:JumpPage}
-                    <a class="jump_page" href="{URL}">{PageNumber}</a>
+                    <li><a href="{URL}">{PageNumber}</a></li>
                 {/block:JumpPage}
             {/block:JumpPagination}
 
             {block:NextPage}
-                <a href="{NextPage}">Next</a>
+              <li><a href="{NextPage}">&raquo;</a></li>
             {/block:NextPage}
+          </ul>
         {/block:Pagination}
     {block:Pagination}
 		<ul class="pager">

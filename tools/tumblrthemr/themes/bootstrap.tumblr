@@ -10,10 +10,10 @@
 						<li class="visible-lg"><a href="/ask">{AskLabel}</a></li>
 					{/block:AskEnabled}
 					{block:HasPages}
-            {block:Pages}
-            <li><a href="{URL}">{Label}</a></li>
-            {/block:Pages}
-     		  {/block:HasPages}
+						{block:Pages}
+						<li><a href="{URL}">{Label}</a></li>
+						{/block:Pages}
+					{/block:HasPages}
 				</ul>
 			</div>
 		</div>
@@ -193,6 +193,44 @@
 		</div>
 		{/block:PostNotes}
 		{/block:Posts}
+
+		{block:Pagination}
+		<ul class="pager">
+			{block:PreviousPage}
+				<li class="previous"><a href="{PreviousPage}">&larr; Newer</a></li>
+			{/block:PreviousPage}
+
+			{block:NextPage}
+				<li class="next"><a href="{NextPage}">Older &rarr;</a></li>
+			{/block:NextPage}
+
+			</ul>
+		{/block:Pagination}
+
+		<div class="row center">
+			{block:Pagination}
+			<ul class="pagination">
+				{block:PreviousPage}
+					<li><a href="{PreviousPage}">&laquo;</a></li>
+				{/block:PreviousPage}
+
+				{block:JumpPagination length="5"}
+					{block:CurrentPage}
+						<li class="active"><a href="#">{PageNumber}</a></li>
+					{/block:CurrentPage}
+
+					{block:JumpPage}
+						<li><a href="{URL}">{PageNumber}</a></li>
+					{/block:JumpPage}
+				{/block:JumpPagination}
+
+				{block:NextPage}
+					<li><a href="{NextPage}">&raquo;</a></li>
+				{/block:NextPage}
+			</ul>
+			{/block:Pagination}
+		</div>
+	
 		</div>
 		<div class="col-lg-4">
 			<div class="well well-lg">
@@ -214,16 +252,16 @@
 					<li><a href="/archive">Archive</a></li>
 
 					{block:HasPages}
-            {block:Pages}
-            <li class="visible-sm"><a href="{URL}">{Label}</a></li>
-            {/block:Pages}
-     		  {/block:HasPages}
+						{block:Pages}
+						<li class="visible-sm"><a href="{URL}">{Label}</a></li>
+						{/block:Pages}
+					{/block:HasPages}
 				</ul>
 
 <form action="/search" method="get" class="form-horizontal">
 		<div class="input-group">
 			<span class="glyphicon glyphicon-search input-group-addon"></span>
-	    <input type="text" name="q" value="{SearchQuery}" class="form-control" placeholder="Search">
+			<input type="text" name="q" value="{SearchQuery}" class="form-control" placeholder="Search">
 		</div>
 </form>
 
@@ -253,39 +291,9 @@
 				
 			</div>
 		</div>
-		</div>
-        {block:Pagination}
-            {block:PreviousPage}
-                <a href="{PreviousPage}">Previous</a>
-            {/block:PreviousPage}
 
-            {block:JumpPagination length="5"}
-                {block:CurrentPage}
-                    <span class="current_page">{PageNumber}</span>
-                {/block:CurrentPage}
-
-                {block:JumpPage}
-                    <a class="jump_page" href="{URL}">{PageNumber}</a>
-                {/block:JumpPage}
-            {/block:JumpPagination}
-
-            {block:NextPage}
-                <a href="{NextPage}">Next</a>
-            {/block:NextPage}
-        {/block:Pagination}
-    {block:Pagination}
-		<ul class="pager">
-			{block:PreviousPage}
-				<li><a href="{PreviousPage}">&#171; Previous</a></li>
-			{/block:PreviousPage}
-
-			{block:NextPage}
-				<li><a href="{NextPage}">Next &#187;</a></li>
-			{/block:NextPage}
-
-			</ul>
-    {/block:Pagination}
-    <footer>
+	</div>
+		<footer>
 			&copy; 2013 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a><br>
 			Built with <a href="http://getbootstrap.com/">Twitter Bootstrap</a> 
 			using <a href="http://tumblrthemr.icelab.com.au/">TumblrThemr</a>.
