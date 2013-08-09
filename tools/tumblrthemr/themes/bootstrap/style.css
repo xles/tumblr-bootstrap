@@ -1,6 +1,7 @@
 @import url('http://getbootstrap.com/dist/css/bootstrap.css');
+/*
+*/     
 @import url('bootstrap-glyphicons.css');
-     
 body {
 	padding-top: 70px;
 	padding-bottom: 40px;
@@ -14,4 +15,16 @@ footer {
 	margin-top: 100px;
 	text-align: center;
 	border-top: 1px solid #e5e5e5;
+}
+.sidebar-item {
+	margin-top: 10px;
+}
+.tumblr-tags {
+	margin-top:10px;
+	margin-bottom:-5px;
+}
+.tumblr-tags .glyphicon {
+	top: 3px;
+	right: 5px;
+	position: relative;
 }

@@ -2,12 +2,14 @@
 <html>
 	<head>
 		<title>{Title}</title>
-		<link rel="shortcut icon" href="{Favicon}">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="alternate" type="application/rss+xml" href="{RSS}">
+		<link rel="shortcut icon" href="{Favicon}">
 		{block:Description}
 			<meta name="description" content="{MetaDescription}" />
 		{/block:Description}
+
+		<meta name="if:Enable Jump Pagination" content="1" />
 
 
 		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
@@ -29,13 +31,29 @@
 				text-align: center;
 				border-top: 1px solid #e5e5e5;
 			}
+			.sidebar-item {
+				margin-top: 10px;
+			}			
+			.tumblr-tags {
+				margin-top:10px;
+				margin-bottom:-5px;
+			}
+			.tumblr-tags .glyphicon {
+				top: 3px;
+				right: 5px;
+				position: relative;
+			}
 		</style>
 		<style type="text/css">{CustomCSS}</style>
+		<!--[if lt IE 9]>
+			<script src="http://getbootstrap.com/assets/js/html5shiv.js"></script>
+			<script src="http://getbootstrap.com/assets/js/respond.min.js"></script>
+		<![endif]-->
 	</head>
 	<body>
 		<div class="navbar navbar-fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="#">{Title}</a>
+				<a class="navbar-brand" href="/">{Title}</a>
 				<ul class="nav navbar-nav hidden-sm">
 					{block:AskEnabled}
 						<li class="visible-lg"><a href="/ask">{AskLabel}</a></li>
@@ -177,6 +195,14 @@
 							{Answer}
 						{/block:Answer}
 
+						{block:HasTags}
+						<div class="tumblr-tags">
+							<span class="glyphicon glyphicon-tags"></span>
+							{block:Tags}
+								<a href="{TagURL}" class="label label-default">{Tag}</a>
+							{/block:Tags}
+						</div>
+						{/block:HasTags}
 						<div class="panel-footer">
 							<a href="{Permalink}">
 								<div class="notes pull-right">
@@ -201,13 +227,6 @@
 									</div>
 								</div>
 							</a>
-							{block:HasTags}
-							<div>
-								{block:Tags}
-									<a href="{TagURL}" class="label label-default">{Tag}</a>
-								{/block:Tags}
-							</div>
-							{/block:HasTags}
 									
 							{block:ContentSource}
 							<a href="{SourceURL}" class="source_url">
@@ -294,31 +313,31 @@
 						{/block:HasPages}
 					</ul>
 
-					<form action="/search" method="get" class="form-horizontal">
+					<form action="/search" method="get" class="form-horizontal sidebar-item">
 							<div class="input-group">
 								<span class="glyphicon glyphicon-search input-group-addon"></span>
 								<input type="text" name="q" value="{SearchQuery}" class="form-control" placeholder="Search">
 							</div>
 					</form>
 
-					<a href="http://www.tumblr.com/follow/{PlaintextName}" class="btn btn-primary btn-lg btn-block">
+					<a href="http://www.tumblr.com/follow/{PlaintextName}" class="btn btn-primary btn-lg btn-block sidebar-item">
 						{lang:Follow on Tumblr}
 					</a>
 
 					<div class="row">
 						<div class="col-lg-6" id="button-rss">
-							<a href="{RSS}" class="btn btn-default btn-block">{lang:RSS feed}</a>
+							<a href="{RSS}" class="btn btn-default btn-block sidebar-item">{lang:RSS feed}</a>
 						</div>
 						<div class="col-lg-6" id="button-random">
-							<a href="/random" class="btn btn-default btn-block">{lang:Random}</a>
+							<a href="/random" class="btn btn-default btn-block sidebar-item">{lang:Random}</a>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-6" id="button-archive">
-							<a href="/archive" class="btn btn-default btn-block">{lang:Archive}</a>
+							<a href="/archive" class="btn btn-default btn-block sidebar-item">{lang:Archive}</a>
 						</div>
 						<div class="col-lg-6" id="button-mobile">
-							<a href="/mobile" class="btn btn-default btn-block">{lang:Mobile}</a>
+							<a href="/mobile" class="btn btn-default btn-block sidebar-item">{lang:Mobile}</a>
 						</div>
 					</div>
 				</div>
