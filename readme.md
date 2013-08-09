@@ -8,4 +8,12 @@ of `dist/index.html` into the tumblr customizer thingy and give it a try.
 
 Note that all things aren't supported yet.
 
+##Features
+
+TBA
+
+## Live Demo
+
+http://tumbootstrap.tumblr.com/
+
 [1]: http://getbootstrap.com/

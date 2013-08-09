@@ -66,13 +66,13 @@
 						{/block:Text}
 
 						{block:Photo}
-							<div class="thumbnail" style="text-align:center;">
+							<div class="thumbnail" class="center">
 								{LinkOpenTag}
-								<img src="{PhotoURL-500}" alt="{PhotoAlt}" class="img-rounded">
+								<img src="{PhotoURL-500}" alt="{PhotoAlt}" class="img-rounded img-responsive center">
 								{LinkCloseTag}
 								{block:Caption}
 								<div class="caption">
-									<h3>{Caption}</h3>
+									{Caption}
 								</div>
 								{/block:Caption}
 							</div>
@@ -96,6 +96,11 @@
 						{/block:Photoset}
 
 						{block:Quote}
+							{block:Title}
+							<div class="panel-heading">
+								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
+							</div>
+							{/block:Title}
 							<blockquote>
 								<p>"{Quote}"</p>
 								{block:Source}
@@ -107,6 +112,11 @@
 						{/block:Quote}
 
 						{block:Link}
+							{block:Title}
+							<div class="panel-heading">
+								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
+							</div>
+							{/block:Title}
 								<a href="{URL}" class="link" {Target}>{Name}</a>
 								{block:Description}
 									<div class="description">{Description}</div>
@@ -114,22 +124,25 @@
 						{/block:Link}
 
 						{block:Chat}
+							{block:Title}
+							<div class="panel-heading">
+								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
+							</div>
+							{/block:Title}
 							<div class="post chat">
-								{block:Title}
-									<h3><a href="{Permalink}">{Title}</a></h3>
-								{/block:Title}
-
-								<ul class="chat">
+								<dl class="dl-horizontal">
 									{block:Lines}
-										<li class="{Alt} user_{UserNumber}">
+										<dt class="{Alt} user_{UserNumber}">
 											{block:Label}
-												<span class="label">{Label}</span>
+												<span>{Label}</span>
 											{/block:Label}
 
+										</dt>
+										<dd>
 											{Line}
-										</li>
+										</dd>
 									{/block:Lines}
-								</ul>
+								</dl>
 							</div>
 						{/block:Chat}
 
