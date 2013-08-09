@@ -35,9 +35,9 @@
 						{/block:Text}
 
 						{block:Photo}
-							<div class="thumbnail" class="center">
+							<div class="center">
 								{LinkOpenTag}
-								<img src="{PhotoURL-500}" alt="{PhotoAlt}" class="img-rounded img-responsive center">
+								<img src="{PhotoURL-500}" alt="{PhotoAlt}" class="img-thumbnail img-responsive">
 								{LinkCloseTag}
 								{block:Caption}
 								<div class="caption">
@@ -170,10 +170,10 @@
 											{/block:RebloggedFromReblog}
 										{/block:Reblog}
 
-										{block:NotReblog}
 											{block:Date}
 												Posted {TimeAgo} {block:source}from {source}{/block:source}
 											{/block:Date}
+										{block:NotReblog}
 										{/block:NotReblog}
 									</div>
 								</div>
@@ -276,19 +276,31 @@
 					</a>
 
 					<div class="row">
-						<div class="col-lg-6" id="button-rss">
-							<a href="{RSS}" class="btn btn-default btn-block sidebar-item">{lang:RSS feed}</a>
+						<div class="col-lg-6" id="button-archive">
+							<a href="/archive" class="btn btn-default btn-block sidebar-item">
+								<span class=" glyphicon glyphicon-list"></span>
+								{lang:Archive}
+							</a>
 						</div>
 						<div class="col-lg-6" id="button-random">
-							<a href="/random" class="btn btn-default btn-block sidebar-item">{lang:Random}</a>
+							<a href="/random" class="btn btn-default btn-block sidebar-item">
+								<span class="glyphicon glyphicon-random"></span>
+								{lang:Random}
+							</a>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6" id="button-archive">
-							<a href="/archive" class="btn btn-default btn-block sidebar-item">{lang:Archive}</a>
+						<div class="col-lg-6" id="button-rss">
+							<a href="{RSS}" class="btn btn-default btn-block sidebar-item">
+								<img src="https://dl.dropboxusercontent.com/u/58338447/tumblr/glyphicons_social_37_rss.png" class="btn-img">
+								{lang:RSS feed}
+							</a>
 						</div>
 						<div class="col-lg-6" id="button-mobile">
-							<a href="/mobile" class="btn btn-default btn-block sidebar-item">{lang:Mobile}</a>
+							<a href="/mobile" class="btn btn-default btn-block sidebar-item">
+								<span class="glyphicon glyphicon-phone"></span>
+								{lang:Mobile}
+							</a>
 						</div>
 					</div>
 				</div>
@@ -299,8 +311,9 @@
 		</div>
 
 		<footer>
-			&copy; 2013 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a><br>
 			Built with <a href="http://getbootstrap.com/">Twitter Bootstrap</a> 
-			using <a href="http://tumblrthemr.icelab.com.au/">TumblrThemr</a>.
+			using <a href="http://tumblrthemr.icelab.com.au/">TumblrThemr</a>. 
+			Icons from <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+			&copy; 2013 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a>
 		</footer>
 {/block:tumblrThemr}

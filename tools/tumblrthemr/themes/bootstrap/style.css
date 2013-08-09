@@ -28,3 +28,12 @@ footer {
 	right: 5px;
 	position: relative;
 }
+.btn-img {
+	max-height: 17px;
+}
+.btn-img, a.sidebar-item .glyphicon {
+	float:left;
+	left:10px;
+	position: relative;
+	top: 2px;
+}
