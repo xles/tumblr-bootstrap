@@ -86,7 +86,7 @@
 								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
 							</div>
 							{/block:Title}
-								<a href="{URL}" class="link" {Target}>{Name}</a>
+								<a href="{URL}" class="link-post btn btn-info btn-lg" {Target}>{Name} &raquo;</a>
 								{block:Description}
 									<div class="description">{Description}</div>
 								{/block:Description}

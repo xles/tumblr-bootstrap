@@ -53,6 +53,11 @@ footer {
 	position: relative;
 	top: 2px;
 }
+.link-post {
+	margin-bottom: 10px;
+	padding-right: 30px;
+	padding-left: 30px;
+}
 		</style>
 		<style type="text/css">{CustomCSS}</style>
 		<!--[if lt IE 9]>
@@ -145,7 +150,7 @@ footer {
 								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
 							</div>
 							{/block:Title}
-								<a href="{URL}" class="link" {Target}>{Name}</a>
+								<a href="{URL}" class="link-post btn btn-info btn-lg" {Target}>{Name} &raquo;</a>
 								{block:Description}
 									<div class="description">{Description}</div>
 								{/block:Description}
@@ -370,9 +375,10 @@ footer {
 		</div>
 
 		<footer>
-			&copy; 2013 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a><br>
 			Built with <a href="http://getbootstrap.com/">Twitter Bootstrap</a> 
-			using <a href="http://tumblrthemr.icelab.com.au/">TumblrThemr</a>.
+			using <a href="http://tumblrthemr.icelab.com.au/">TumblrThemr</a>. 
+			Icons from <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+			&copy; 2013 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a>
 		</footer>
 	</body>
 </html>

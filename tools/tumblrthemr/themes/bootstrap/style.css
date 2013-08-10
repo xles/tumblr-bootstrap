@@ -37,3 +37,8 @@ footer {
 	position: relative;
 	top: 2px;
 }
+.link-post {
+	margin-bottom: 15px;
+	padding-right: 30px;
+	padding-left: 30px;
+}
