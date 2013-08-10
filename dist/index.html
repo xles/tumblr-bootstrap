@@ -58,6 +58,9 @@ footer {
 	padding-right: 30px;
 	padding-left: 30px;
 }
+.thumbnail {
+    margin-bottom: 15px;
+}
 		</style>
 		<style type="text/css">{CustomCSS}</style>
 		<!--[if lt IE 9]>
@@ -101,7 +104,7 @@ footer {
 						{block:Photo}
 							<div class="center">
 								{LinkOpenTag}
-								<img src="{PhotoURL-500}" alt="{PhotoAlt}" class="img-thumbnail img-responsive">
+								<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-thumbnail img-responsive">
 								{LinkCloseTag}
 								{block:Caption}
 								<div class="caption">
@@ -121,12 +124,106 @@ footer {
 							{/block:Caption}
 						{/block:Panorama}
 
-						{block:Photoset}
-							{Photoset-500}
-							{block:Caption}
-								<div class="caption">{Caption}</div>
-							{/block:Caption}
-						{/block:Photoset}
+{block:Photoset}
+<!--
+{Photoset-500}
+-->
+		<script type="text/javascript">
+		var layout = {JSPhotosetLayout};
+		var photocount = 0;
+		var photoclass = '', photos = [];
+		for(var i=0;i<layout.length;i++) {
+			switch(layout[i]) {
+				case "1":
+					photoclass = 'col-lg-12';
+					break;
+				case "2":
+					photoclass = 'col-lg-6';
+					break;
+				case "3":
+					photoclass = 'col-lg-4';
+					break;
+				case "4":
+					photoclass = 'col-lg-3';
+					break;
+			}
+			for(var j=0; j < parseInt(layout[i]); j++) {
+				photos[photocount] = {
+					'class': photoclass,
+					rowsize: parseInt(layout[i])
+				};
+				photocount++;
+			}
+		}
+		photocount = 0;
+		var rowcount = 0;
+	</script>
+
+	{block:Photos}
+		<script>
+			if(rowcount == 0) {
+				document.write('<div class="row">');
+			}
+		</script>
+
+		<div id="photosetphoto" class="col-lg-3">
+			<script>
+				var photo = document.getElementById('photosetphoto');
+				photo.className = photos[photocount].class;
+				photo.removeAttribute('id');
+				rowcount++;
+			</script>
+			<div class="thumbnail center">
+						{LinkOpenTag}
+				<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-responsive">
+				{block:Caption}
+					<div class="caption">
+						{Caption}
+					</div>
+				{/block:Caption}
+						{LinkCloseTag}
+			</div>
+		</div>
+		<script>
+			if(rowcount == photos[photocount].rowsize) {
+				document.write('</div>');
+				rowcount = 0;
+			}
+			photocount++;                                        
+		</script>
+	{/block:Photos}
+	{block:Caption}
+		<div class="caption">{Caption}</div>
+	{/block:Caption}
+{/block:Photoset}
+
+<!--
+{block:Photoset}
+		<div class="carousel slide">
+						 <div class="carousel-inner">
+	{block:Photos}
+							 <div class="item">
+			<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-responsive">
+				{block:Caption}
+					<div class="carousel-caption">
+						{Caption}
+					</div>
+				{/block:Caption}
+		</div>
+	{/block:Photos}
+</div>
+					<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+		<span class="icon-prev"></span>
+	</a>
+	<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+		<span class="icon-next"></span>
+	</a>
+	{block:Caption}
+		<div class="caption">{Caption}</div>
+	{/block:Caption}
+</div>
+{/block:Photoset}
+-->
 
 						{block:Quote}
 							{block:Title}
