@@ -2,7 +2,7 @@
 		<link href="themes/bootstrap/style.css" rel="stylesheet">
 		<style type="text/css">{CustomCSS}</style>
 
-		<div class="navbar navbar-fixed-top">
+		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="/">{Title}</a>
 				<ul class="nav navbar-nav hidden-sm">
@@ -21,9 +21,9 @@
 
 		<div class="container" id="posts">
 			<div class="row">
-				<div class="col-lg-8">
+				<div class="col-md-8">
 					{block:Posts}
-					<div class="panel">
+					<div class="panel panel-default">
 
 						{block:Text}
 							{block:Title}
@@ -31,10 +31,12 @@
 								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
 							</div>
 							{/block:Title}
+								<div class="panel-body">
 							{Body}			
 						{/block:Text}
 
 						{block:Photo}
+									<div class="panel-body">
 							<div class="center">
 								{LinkOpenTag}
 								<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-thumbnail img-responsive">
@@ -58,9 +60,15 @@
 						{/block:Panorama}
 
 {block:Photoset}
+
+									<div class="panel-body">
+
+
 <!--
+ {select:Photoset Style}
 {Photoset-500}
 -->
+	 {block:IfNotCarouselPhotoset}
 		<script type="text/javascript">
 		var layout = {JSPhotosetLayout};
 		var photocount = 0;
@@ -68,16 +76,16 @@
 		for(var i=0;i<layout.length;i++) {
 			switch(layout[i]) {
 				case "1":
-					photoclass = 'col-lg-12';
+					photoclass = 'col-md-12';
 					break;
 				case "2":
-					photoclass = 'col-lg-6';
+					photoclass = 'col-md-6';
 					break;
 				case "3":
-					photoclass = 'col-lg-4';
+					photoclass = 'col-md-4';
 					break;
 				case "4":
-					photoclass = 'col-lg-3';
+					photoclass = 'col-md-3';
 					break;
 			}
 			for(var j=0; j < parseInt(layout[i]); j++) {
@@ -92,29 +100,31 @@
 		var rowcount = 0;
 	</script>
 
-	{block:Photos}
+		{block:Photos}
 		<script>
 			if(rowcount == 0) {
 				document.write('<div class="row">');
 			}
 		</script>
 
-		<div id="photosetphoto" class="col-lg-3">
+		<div id="photosetphoto" class="col-md-3">
 			<script>
 				var photo = document.getElementById('photosetphoto');
 				photo.className = photos[photocount].class;
 				photo.removeAttribute('id');
 				rowcount++;
 			</script>
-			<div class="thumbnail center">
+			<div class="thumbnail center photoset">
 						{LinkOpenTag}
 				<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-responsive">
+					{LinkCloseTag}
 				{block:Caption}
-					<div class="caption">
+							{LinkOpenTag}
+					<span class="caption">
 						{Caption}
-					</div>
+					</span>
+							{LinkCloseTag}
 				{/block:Caption}
-						{LinkCloseTag}
 			</div>
 		</div>
 		<script>
@@ -128,35 +138,45 @@
 	{block:Caption}
 		<div class="caption">{Caption}</div>
 	{/block:Caption}
-{/block:Photoset}
+		{/block:IfNotCarouselPhotoset}
 
-<!--
-{block:Photoset}
-		<div class="carousel slide">
-						 <div class="carousel-inner">
-	{block:Photos}
-							 <div class="item">
-			<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-responsive">
-				{block:Caption}
-					<div class="carousel-caption">
-						{Caption}
-					</div>
+		{block:IfCarouselPhotoset}
+		<div id="photoset-carousel" class="carousel slide">
+		<script>
+		var n=0;
+		document.write('<ol class="carousel-indicators">');
+		{block:Photos}
+		document.write(
+				'<li data-target="#photoset-carousel" data-slide-to="'+n+'"></li>'
+		);
+		n++;
+		{/block:Photos}
+		document.write('</ol>');
+		</script>
+		<div class="carousel-inner">
+		{block:Photos}
+			<div class="item">
+				<img src="{PhotoURL-1280}" alt="{PhotoAlt}">
+			{block:Caption}
+						<div class="carousel-caption">
+					{Caption}
+			</div>
 				{/block:Caption}
+			</div>
+			{/block:Photos}
 		</div>
-	{/block:Photos}
-</div>
-					<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-		<span class="icon-prev"></span>
-	</a>
-	<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-		<span class="icon-next"></span>
-	</a>
-	{block:Caption}
+		<a class="left carousel-control" href="#photoset-carousel" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#photoset-carousel" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
+		{block:Caption}
 		<div class="caption">{Caption}</div>
 	{/block:Caption}
-</div>
+		{/block:IfCarouselPhotoset}
 {/block:Photoset}
--->
 
 						{block:Quote}
 							{block:Title}
@@ -164,6 +184,7 @@
 								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
 							</div>
 							{/block:Title}
+									<div class="panel-body">
 							<blockquote>
 								<p>"{Quote}"</p>
 								{block:Source}
@@ -180,6 +201,7 @@
 								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
 							</div>
 							{/block:Title}
+									<div class="panel-body">
 								<a href="{URL}" class="link-post btn btn-info btn-lg" {Target}>{Name} &raquo;</a>
 								{block:Description}
 									<div class="description">{Description}</div>
@@ -192,6 +214,7 @@
 								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
 							</div>
 							{/block:Title}
+									<div class="panel-body">
 							<div class="post chat">
 								<dl class="dl-horizontal">
 									{block:Lines}
@@ -210,6 +233,7 @@
 						{/block:Chat}
 
 						{block:Video}
+									<div class="panel-body">
 							<div class="center">
 									{Video-500}
 							</div>
@@ -219,6 +243,7 @@
 						{/block:Video}
 
 						{block:Audio}
+									<div class="panel-body">
 							{AudioPlayerBlack}
 							{block:Caption}
 								<div class="caption">{Caption}</div>
@@ -226,6 +251,7 @@
 						{/block:Audio}
 
 						{block:Answer}
+									<div class="panel-body">
 							<div class="well">
 								<div class="media">
 									<img src="{AskerPortraitURL-64}" class="media-object pull-left">
@@ -248,6 +274,7 @@
 							{/block:Tags}
 						</div>
 						{/block:HasTags}
+												</div>
 						<div class="panel-footer">
 							<a href="{Permalink}">
 								<div class="notes pull-right">
@@ -283,9 +310,11 @@
 					</div>
 					
 					{block:PostNotes}
-					<div class="panel">
+					<div class="panel panel-default">
 						<div class="panel-heading">Notes</div>
-							{PostNotes}
+									<div class="panel-body">
+									{PostNotes}
+														</div>
 					</div>
 					{/block:PostNotes}
 					
@@ -333,7 +362,7 @@
 				{/block:IfEnableJumpPagination}
 
 			</div>
-			<div class="col-lg-4">
+			<div class="col-md-4">
 				<div class="well well-lg">
 					<div class="media">
 						<img src="{PortraitURL-128}" class="media-object pull-left img-thumbnail">
@@ -360,7 +389,9 @@
 
 					<form action="/search" method="get" class="form-horizontal sidebar-item">
 							<div class="input-group">
-								<span class="glyphicon glyphicon-search input-group-addon"></span>
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-search"></span>    
+									</span>
 								<input type="text" name="q" value="{SearchQuery}" class="form-control" placeholder="Search">
 							</div>
 					</form>
@@ -370,13 +401,13 @@
 					</a>
 
 					<div class="row">
-						<div class="col-lg-6" id="button-archive">
+						<div class="col-md-6" id="button-archive">
 							<a href="/archive" class="btn btn-default btn-block sidebar-item">
 								<span class=" glyphicon glyphicon-list"></span>
 								{lang:Archive}
 							</a>
 						</div>
-						<div class="col-lg-6" id="button-random">
+						<div class="col-md-6" id="button-random">
 							<a href="/random" class="btn btn-default btn-block sidebar-item">
 								<span class="glyphicon glyphicon-random"></span>
 								{lang:Random}
@@ -384,13 +415,13 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6" id="button-rss">
+						<div class="col-md-6" id="button-rss">
 							<a href="{RSS}" class="btn btn-default btn-block sidebar-item">
 								<img src="https://dl.dropboxusercontent.com/u/58338447/tumblr/glyphicons_social_37_rss.png" class="btn-img">
 								{lang:RSS feed}
 							</a>
 						</div>
-						<div class="col-lg-6" id="button-mobile">
+						<div class="col-md-6" id="button-mobile">
 							<a href="/mobile" class="btn btn-default btn-block sidebar-item">
 								<span class="glyphicon glyphicon-phone"></span>
 								{lang:Mobile}
@@ -410,4 +441,13 @@
 			Icons from <a href="http://glyphicons.com/">Glyphicons</a>.<br>
 			&copy; 2013 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a>
 		</footer>
+		
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="https://dl.dropboxusercontent.com/u/58338447/tumblr/bootstrap.min.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function(){
+				$('.carousel-inner .item:first').addClass('active');
+				$('.carousel').carousel();
+			});
+		</script>
 {/block:tumblrThemr}
