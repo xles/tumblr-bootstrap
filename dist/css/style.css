@@ -1,6 +1,5 @@
-@import url('http://getbootstrap.com/dist/css/bootstrap.css');
-@import url('bootstrap-glyphicons.css');
-     
+@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css');
+
 body {
 	padding-top: 70px;
 	padding-bottom: 40px;

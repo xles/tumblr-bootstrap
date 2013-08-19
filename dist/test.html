@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+	<head>
+		<title>
+			{block:PostTitle}
+				{PostTitle}
+			{/block:PostTitle}
+			&raquo;
+			{Title}
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="alternate" type="application/rss+xml" href="{RSS}">
+		<link rel="shortcut icon" href="{Favicon}">
+		{block:Description}
+			<meta name="description" content="{MetaDescription}" />
+		{/block:Description}
+
+		<meta name="if:Enable Jump Pagination" content="1" />
+
+
+		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
+		<link href="https://dl.dropboxusercontent.com/u/58338447/tumblr/css/bootstrap-glyphicons.css" rel="stylesheet">
+<!--
+		<link href="css/style.css" rel="stylesheet">
+-->
+		<style type="text/css">
+body {
+	padding-top: 70px;
+	padding-bottom: 40px;
+}
+.center {
+	text-align: center;
+}
+footer {
+	padding-top: 40px;
+	padding-bottom: 30px;
+	margin-top: 100px;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
+}
+.sidebar-item {
+	margin-top: 10px;
+}
+.tumblr-tags {
+	margin-top:10px;
+	margin-bottom:-5px;
+}
+.tumblr-tags .glyphicon {
+	top: 3px;
+	right: 5px;
+	position: relative;
+}
+.btn-img {
+	max-height: 17px;
+}
+.btn-img, a.sidebar-item .glyphicon {
+	float:left;
+	left:10px;
+	position: relative;
+	top: 2px;
+}
+.link-post {
+	margin-bottom: 10px;
+	padding-right: 30px;
+	padding-left: 30px;
+}
+.thumbnail {
+    margin-bottom: 15px;
+}
+		</style>
+		<style type="text/css">{CustomCSS}</style>
+		<!--[if lt IE 9]>
+			<script src="http://getbootstrap.com/assets/js/html5shiv.js"></script>
+			<script src="http://getbootstrap.com/assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<div id="carousel-example-generic" class="carousel slide">
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="http://31.media.tumblr.com/17791ff4870a64aaa2c09c9a29e085f5/tumblr_mrb7qnmx5e1selmlgo4_r1_1280.png" 
+									alt="The MareBook wallpaper collection." class="img-responsive">
+						<div class="carousel-caption">
+							Fluttershy
+						</div>
+					</div>
+					<div class="item active">
+						<img src="http://31.media.tumblr.com/70ec9f9d38a631f9291971dc77d7e312/tumblr_mrb7qnmx5e1selmlgo3_r1_1280.png" alt="The MareBook wallpaper collection." class="img-responsive">
+						<div class="carousel-caption">
+							Applejack
+						</div>
+					</div>
+					<div class="item active">
+						<img src="http://24.media.tumblr.com/23da3d28ea0962cefc9a6898abf8fd69/tumblr_mrb7qnmx5e1selmlgo1_1280.png" alt="The MareBook wallpaper collection." class="img-responsive">
+						<div class="carousel-caption">
+							Rarity
+						</div>
+					</div>
+					<div class="item active">
+						<img src="http://24.media.tumblr.com/ca2598818feb2d7b5efc62efd807a8e9/tumblr_mrb7qnmx5e1selmlgo6_r1_1280.png" alt="The MareBook wallpaper collection." class="img-responsive">
+						<div class="carousel-caption">
+							Rainbow Dash
+						</div>
+					</div>
+				 	<div class="item active">
+						<img src="http://31.media.tumblr.com/ad49b5c7858325777c872f656f84fe24/tumblr_mrb7qnmx5e1selmlgo2_r1_1280.png" alt="The MareBook wallpaper collection." class="img-responsive">
+						<div class="carousel-caption">
+							Twilight Sparkle
+						</div>
+					</div>
+					<div class="item active">
+						<img src="http://31.media.tumblr.com/7110270fdaf144cb3b65893d6183c21b/tumblr_mrb7qnmx5e1selmlgo5_r1_1280.png" alt="The MareBook wallpaper collection." class="img-responsive">
+						<div class="carousel-caption">
+							Pinkie Pie
+						</div>
+					</div>
+				</div>
+				<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+				<div class="caption">
+					<p>The MareBook wallpaper collection.</p>
+				</div>
+			</div>
+		</div>
+		<footer>
+			Built with <a href="http://getbootstrap.com/">Twitter Bootstrap</a> 
+			using <a href="http://tumblrthemr.icelab.com.au/">TumblrThemr</a>. 
+			Icons from <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+			&copy; 2013 <a href="http://www.tumblr.com">{lang:Powered by Tumblr}</a>
+		</footer>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="https://dl.dropboxusercontent.com/u/58338447/tumblr/bootstrap.min.js" type="text/javascript"></script>
+    <script>
+      $(document).ready(function(){
+    	  $('.carousel').carousel();
+      });
+    </script>
+	</body>
+</html>
