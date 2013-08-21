@@ -1,0 +1,114 @@
+{block:Photoset}
+	<div class="panel-body">
+<!--
+	{Photoset-500}
+-->
+	{block:IfNotCarouselPhotoset}
+		<script type="text/javascript">
+			var layout = {JSPhotosetLayout};
+			var photocount = 0;
+			var photoclass = '', photos = [];
+			for(var i=0;i<layout.length;i++) {
+				switch(layout[i]) {
+					case "1":
+						photoclass = 'col-md-12';
+						break;
+					case "2":
+						photoclass = 'col-md-6';
+						break;
+					case "3":
+						photoclass = 'col-md-4';
+						break;
+					case "4":
+						photoclass = 'col-md-3';
+						break;
+				}
+				for(var j=0; j < parseInt(layout[i]); j++) {
+					photos[photocount] = {
+						'class': photoclass,
+						rowsize: parseInt(layout[i])
+					};
+					photocount++;
+				}
+			}
+			photocount = 0;
+			var rowcount = 0;
+		</script>
+
+		{block:Photos}
+			<script>
+				if(rowcount == 0) {
+					document.write('<div class="row">');
+				}
+			</script>
+
+			<div id="photosetphoto" class="col-md-3">
+				<script>
+					var photo = document.getElementById('photosetphoto');
+					photo.className = photos[photocount].class;
+					photo.removeAttribute('id');
+					rowcount++;
+				</script>
+				<div class="thumbnail center photoset">
+							{LinkOpenTag}
+					<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-responsive">
+						{LinkCloseTag}
+					{block:Caption}
+								{LinkOpenTag}
+						<span class="caption">
+							{Caption}
+						</span>
+								{LinkCloseTag}
+					{/block:Caption}
+				</div>
+			</div>
+			<script>
+				if(rowcount == photos[photocount].rowsize) {
+					document.write('</div>');
+					rowcount = 0;
+				}
+				photocount++;                                        
+			</script>
+		{/block:Photos}
+		{block:Caption}
+			<div class="caption">{Caption}</div>
+		{/block:Caption}
+	{/block:IfNotCarouselPhotoset}
+
+	{block:IfCarouselPhotoset}
+		<div id="photoset-carousel" class="carousel slide">
+			<script>
+				var n=0;
+				document.write('<ol class="carousel-indicators">');
+				{block:Photos}
+				document.write(
+						'<li data-target="#photoset-carousel" data-slide-to="'+n+'"></li>'
+				);
+				n++;
+				{/block:Photos}
+				document.write('</ol>');
+			</script>
+			<div class="carousel-inner">
+			{block:Photos}
+				<div class="item">
+					<img src="{PhotoURL-1280}" alt="{PhotoAlt}">
+						{block:Caption}
+							<div class="carousel-caption">
+								{Caption}
+							</div>
+						{/block:Caption}
+				</div>
+				{/block:Photos}
+			</div>
+			<a class="left carousel-control" href="#photoset-carousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#photoset-carousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+		{block:Caption}
+			<div class="caption">{Caption}</div>
+		{/block:Caption}
+	{/block:IfCarouselPhotoset}
+{/block:Photoset}

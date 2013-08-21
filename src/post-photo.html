@@ -1,0 +1,13 @@
+{block:Photo}
+	<div class="panel-body">
+		<div class="center">
+			{LinkOpenTag}
+				<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-thumbnail img-responsive">
+			{LinkCloseTag}
+			{block:Caption}
+				<div class="caption">
+					{Caption}
+				</div>
+			{/block:Caption}
+		</div>
+{/block:Photo}
