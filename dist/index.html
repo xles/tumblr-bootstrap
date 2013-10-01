@@ -57,6 +57,7 @@ footer {
 	margin-bottom: 10px;
 	padding-right: 30px;
 	padding-left: 30px;
+	white-space: normal;
 }
 .thumbnail {
 		margin-bottom: 15px;
@@ -85,6 +86,19 @@ footer {
 	visibility: visible;
 		opacity:1;
 }
+.caption {
+	margin-top: 1em;
+}
+.caption p {
+	margin: 0 0 1em 0;
+}
+.caption blockquote p {
+	font-size: 1em;
+}
+.caption blockquote {
+	margin: 0 0 1em 0;
+	padding: 0 0 0 15px;
+}
 		</style>
 		<style type="text/css">{CustomCSS}</style>
 		<!--[if lt IE 9]>
@@ -98,7 +112,7 @@ footer {
 				<a class="navbar-brand" href="/">{Title}</a>
 				<ul class="nav navbar-nav hidden-sm">
 					{block:AskEnabled}
-						<li class="visible-lg"><a href="/ask">{AskLabel}</a></li>
+						<li class="visible-md"><a href="/ask">{AskLabel}</a></li>
 					{/block:AskEnabled}
 					{block:HasPages}
 						{block:Pages}
@@ -116,246 +130,243 @@ footer {
 					{block:Posts}
 					<div class="panel panel-default">
 
-						{block:Text}
-							{block:Title}
-							<div class="panel-heading">
-								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
-							</div>
-							{/block:Title}
-								<div class="panel-body">
-							{Body}			
-						{/block:Text}
-
-						{block:Photo}
-									<div class="panel-body">
-							<div class="center">
-								{LinkOpenTag}
-								<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-thumbnail img-responsive">
-								{LinkCloseTag}
-								{block:Caption}
-								<div class="caption">
-									{Caption}
-								</div>
-								{/block:Caption}
-							</div>
-						{/block:Photo}
-
-						{block:Panorama}
-							{LinkOpenTag}
-								<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
-							{LinkCloseTag}
-
-							{block:Caption}
-								<div class="caption">{Caption}</div>
-							{/block:Caption}
-						{/block:Panorama}
-
-{block:Photoset}
-
-									<div class="panel-body">
-
-
-<!--
- {select:Photoset Style}
-{Photoset-500}
--->
-	 {block:IfNotCarouselPhotoset}
-		<script type="text/javascript">
-		var layout = {JSPhotosetLayout};
-		var photocount = 0;
-		var photoclass = '', photos = [];
-		for(var i=0;i<layout.length;i++) {
-			switch(layout[i]) {
-				case "1":
-					photoclass = 'col-md-12';
-					break;
-				case "2":
-					photoclass = 'col-md-6';
-					break;
-				case "3":
-					photoclass = 'col-md-4';
-					break;
-				case "4":
-					photoclass = 'col-md-3';
-					break;
-			}
-			for(var j=0; j < parseInt(layout[i]); j++) {
-				photos[photocount] = {
-					'class': photoclass,
-					rowsize: parseInt(layout[i])
-				};
-				photocount++;
-			}
-		}
-		photocount = 0;
-		var rowcount = 0;
-	</script>
-
-		{block:Photos}
-		<script>
-			if(rowcount == 0) {
-				document.write('<div class="row">');
-			}
-		</script>
-
-		<div id="photosetphoto" class="col-md-3">
-			<script>
-				var photo = document.getElementById('photosetphoto');
-				photo.className = photos[photocount].class;
-				photo.removeAttribute('id');
-				rowcount++;
-			</script>
-			<div class="thumbnail center photoset">
-						{LinkOpenTag}
-				<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-responsive">
-					{LinkCloseTag}
-				{block:Caption}
-							{LinkOpenTag}
-					<span class="caption">
-						{Caption}
-					</span>
-							{LinkCloseTag}
-				{/block:Caption}
+{block:Answer}
+	<div class="panel-body">
+		<div class="well">
+			<div class="media">
+				<img src="{AskerPortraitURL-64}" class="media-object pull-left">
+				<div class="media-body">
+					<h4 class="media-heading">
+						{Asker} asked
+					</h4>
+					{Question}
+				</div>
 			</div>
 		</div>
-		<script>
-			if(rowcount == photos[photocount].rowsize) {
-				document.write('</div>');
-				rowcount = 0;
-			}
-			photocount++;                                        
-		</script>
-	{/block:Photos}
+		<div class="caption">
+		{Answer}
+		</div>
+{/block:Answer}
+
+{block:Audio}
+	<div class="panel-body">
+		{AudioPlayerBlack}
+		{block:Caption}
+			<div class="caption">{Caption}</div>
+		{/block:Caption}
+{/block:Audio}
+
+{block:Chat}
+	{block:Title}
+		<div class="panel-heading">
+			<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
+		</div>
+	{/block:Title}
+	<div class="panel-body">
+		<div class="post chat">
+			<dl class="dl-horizontal">
+				{block:Lines}
+					<dt class="{Alt} user_{UserNumber}">
+						{block:Label}
+							<span>{Label}</span>
+						{/block:Label}
+					</dt>
+					<dd>
+						{Line}
+					</dd>
+				{/block:Lines}
+			</dl>
+		</div>
+{/block:Chat}
+
+{block:Link}
+	{block:Title}
+	<div class="panel-heading">
+		<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
+	</div>
+	{/block:Title}
+	<div class="panel-body">
+		<a href="{URL}" class="link-post btn btn-info btn-lg" {Target}>{Name} &raquo;</a>
+		{block:Description}
+			<div class="caption">{Description}</div>
+		{/block:Description}
+{/block:Link}
+
+{block:Panorama}
+	{LinkOpenTag}
+		<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+	{LinkCloseTag}
+
 	{block:Caption}
 		<div class="caption">{Caption}</div>
 	{/block:Caption}
-		{/block:IfNotCarouselPhotoset}
+{/block:Panorama}
 
-		{block:IfCarouselPhotoset}
-		<div id="photoset-carousel" class="carousel slide">
-		<script>
-		var n=0;
-		document.write('<ol class="carousel-indicators">');
-		{block:Photos}
-		document.write(
-				'<li data-target="#photoset-carousel" data-slide-to="'+n+'"></li>'
-		);
-		n++;
-		{/block:Photos}
-		document.write('</ol>');
-		</script>
-		<div class="carousel-inner">
-		{block:Photos}
-			<div class="item">
-				<img src="{PhotoURL-1280}" alt="{PhotoAlt}">
-			{block:Caption}
-						<div class="carousel-caption">
-					{Caption}
-			</div>
-				{/block:Caption}
-			</div>
-			{/block:Photos}
+{block:Photo}
+	<div class="panel-body">
+		<div class="center">
+			{LinkOpenTag}
+				<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-thumbnail img-responsive">
+			{LinkCloseTag}
 		</div>
-		<a class="left carousel-control" href="#photoset-carousel" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span>
-		</a>
-		<a class="right carousel-control" href="#photoset-carousel" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right"></span>
-		</a>
-	</div>
 		{block:Caption}
-		<div class="caption">{Caption}</div>
-	{/block:Caption}
-		{/block:IfCarouselPhotoset}
+			<div class="caption">
+				{Caption}
+			</div>
+		{/block:Caption}
+{/block:Photo}
+
+{block:Photoset}
+	<div class="panel-body">
+<!--
+	{Photoset-500}
+-->
+	{block:IfNotCarouselPhotoset}
+		<script type="text/javascript">
+			var layout = {JSPhotosetLayout};
+			var photocount = 0;
+			var photoclass = '', photos = [];
+			for(var i=0;i<layout.length;i++) {
+				switch(layout[i]) {
+					case "1":
+						photoclass = 'col-md-12';
+						break;
+					case "2":
+						photoclass = 'col-md-6';
+						break;
+					case "3":
+						photoclass = 'col-md-4';
+						break;
+					case "4":
+						photoclass = 'col-md-3';
+						break;
+				}
+				for(var j=0; j < parseInt(layout[i]); j++) {
+					photos[photocount] = {
+						'class': photoclass,
+						rowsize: parseInt(layout[i])
+					};
+					photocount++;
+				}
+			}
+			photocount = 0;
+			var rowcount = 0;
+		</script>
+
+		{block:Photos}
+			<script>
+				if(rowcount == 0) {
+					document.write('<div class="row">');
+				}
+			</script>
+
+			<div id="photosetphoto" class="col-md-3">
+				<script>
+					var photo = document.getElementById('photosetphoto');
+					photo.className = photos[photocount].class;
+					photo.removeAttribute('id');
+					rowcount++;
+				</script>
+				<div class="thumbnail center photoset">
+							{LinkOpenTag}
+					<img src="{PhotoURL-1280}" alt="{PhotoAlt}" class="img-responsive">
+						{LinkCloseTag}
+					{block:Caption}
+								{LinkOpenTag}
+						<span class="caption">
+							{Caption}
+						</span>
+								{LinkCloseTag}
+					{/block:Caption}
+				</div>
+			</div>
+			<script>
+				if(rowcount == photos[photocount].rowsize) {
+					document.write('</div>');
+					rowcount = 0;
+				}
+				photocount++;                                        
+			</script>
+		{/block:Photos}
+		{block:Caption}
+			<div class="caption">{Caption}</div>
+		{/block:Caption}
+	{/block:IfNotCarouselPhotoset}
+
+	{block:IfCarouselPhotoset}
+		<div id="photoset-carousel" class="carousel slide">
+			<script>
+				var n=0;
+				document.write('<ol class="carousel-indicators">');
+				{block:Photos}
+				document.write(
+						'<li data-target="#photoset-carousel" data-slide-to="'+n+'"></li>'
+				);
+				n++;
+				{/block:Photos}
+				document.write('</ol>');
+			</script>
+			<div class="carousel-inner">
+			{block:Photos}
+				<div class="item">
+					<img src="{PhotoURL-1280}" alt="{PhotoAlt}">
+						{block:Caption}
+							<div class="carousel-caption">
+								{Caption}
+							</div>
+						{/block:Caption}
+				</div>
+				{/block:Photos}
+			</div>
+			<a class="left carousel-control" href="#photoset-carousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#photoset-carousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+		{block:Caption}
+			<div class="caption">{Caption}</div>
+		{/block:Caption}
+	{/block:IfCarouselPhotoset}
 {/block:Photoset}
 
-						{block:Quote}
-							{block:Title}
-							<div class="panel-heading">
-								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
-							</div>
-							{/block:Title}
-									<div class="panel-body">
-							<blockquote>
-								<p>"{Quote}"</p>
-								{block:Source}
-									<small>
-										<cite>{Source}</cite>
-									</small>
-								{/block:Source}
-							</blockquote>
-						{/block:Quote}
+{block:Quote}
+	{block:Title}
+	<div class="panel-heading">
+		<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
+	</div>
+	{/block:Title}
+	<div class="panel-body">
+		<blockquote>
+			<p>"{Quote}"</p>
+			{block:Source}
+			<small>
+				<cite>{Source}</cite>
+			</small>
+			{/block:Source}
+		</blockquote>
+{/block:Quote}
 
-						{block:Link}
-							{block:Title}
-							<div class="panel-heading">
-								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
-							</div>
-							{/block:Title}
-									<div class="panel-body">
-								<a href="{URL}" class="link-post btn btn-info btn-lg" {Target}>{Name} &raquo;</a>
-								{block:Description}
-									<div class="description">{Description}</div>
-								{/block:Description}
-						{/block:Link}
+{block:Text}
+	{block:Title}
+		<div class="panel-heading">
+			<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
+		</div>		
+	{/block:Title}
+	<div class="panel-body">
+	{Body}			
+{/block:Text}
 
-						{block:Chat}
-							{block:Title}
-							<div class="panel-heading">
-								<h3 class="panel-title"><a href="{Permalink}">{Title}</a></h3>
-							</div>
-							{/block:Title}
-									<div class="panel-body">
-							<div class="post chat">
-								<dl class="dl-horizontal">
-									{block:Lines}
-										<dt class="{Alt} user_{UserNumber}">
-											{block:Label}
-												<span>{Label}</span>
-											{/block:Label}
-
-										</dt>
-										<dd>
-											{Line}
-										</dd>
-									{/block:Lines}
-								</dl>
-							</div>
-						{/block:Chat}
-
-						{block:Video}
-									<div class="panel-body">
-							<div class="center">
-									{Video-500}
-							</div>
-								{block:Caption}
-									<div class="caption">{Caption}</div>
-								{/block:Caption}
-						{/block:Video}
-
-						{block:Audio}
-									<div class="panel-body">
-							{AudioPlayerBlack}
-							{block:Caption}
-								<div class="caption">{Caption}</div>
-							{/block:Caption}
-						{/block:Audio}
-
-						{block:Answer}
-									<div class="panel-body">
-							<div class="well">
-								<div class="media">
-									<img src="{AskerPortraitURL-64}" class="media-object pull-left">
-									<div class="media-body">
-										<h4 class="media-heading">
-											{Asker} asked
-										</h4>
-										{Question}
-									</div>
-								</div>
-							</div>
-							{Answer}
-						{/block:Answer}
+{block:Video}
+	<div class="panel-body">
+		<div class="center">
+		{Video-500}
+		</div>
+		{block:Caption}
+			<div class="caption">{Caption}</div>
+		{/block:Caption}
+{/block:Video}
 
 						{block:HasTags}
 						<div class="tumblr-tags">
